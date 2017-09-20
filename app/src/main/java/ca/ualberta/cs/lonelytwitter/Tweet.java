@@ -31,6 +31,10 @@ public abstract class Tweet {
         }
     }
 
+    public String toString() {
+        return date.toString() + "|" + message;
+    }
+
     public String getMessage() {
         return this.message;
     }
