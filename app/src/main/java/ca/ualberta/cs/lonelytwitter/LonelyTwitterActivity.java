@@ -1,3 +1,12 @@
+/*
+ * tweet
+ *
+ * Version 1.0
+ *
+ * Copyright 2017 Team X CMPUT 301, University of Alberta - All rights reserved. You may use, modify, and distribute this code under terms and condition of the Code of Student Behaviour at University of Alberta.
+ * You may find a copy of the license in this project. Otherwise please contact contact@abc.ca
+ */
+
 package ca.ualberta.cs.lonelytwitter;
 
 import java.io.BufferedReader;
@@ -25,16 +34,27 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * Main Android Activity
+ *
+ * @author qikai
+ * @version 1.0
+ */
 public class LonelyTwitterActivity extends Activity {
 
-	private static final String FILENAME = "file.sav";
-	private EditText bodyText;
-	private ListView oldTweetsList;
+	private static final String FILENAME = "file.sav"; /* save file */
+	private EditText bodyText; /* object takes input of tweet message */
+	private ListView oldTweetsList; /* view of previous list of tweets */
 
-	private ArrayList<Tweet> tweetList;
-	private ArrayAdapter<Tweet> adapter;
+	private ArrayList<Tweet> tweetList; /* list of tweets */
+	private ArrayAdapter<Tweet> adapter; /* adapter for tweetlist */
 
 	/** Called when the activity is first created. */
+	/**
+	 * Creates user interfaces for android application
+	 *
+	 * @param savedInstanceState
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,7 +70,7 @@ public class LonelyTwitterActivity extends Activity {
 			public void onClick(View v) {
 				setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
-//				NormalTweet newTweet = new NormalTweet("Bonjour");
+				// NormalTweet newTweet = new NormalTweet("Bonjour");
 				NormalTweet newTweet = new NormalTweet(bodyText.getText().toString());
 
 				tweetList.add(newTweet);
@@ -59,7 +79,6 @@ public class LonelyTwitterActivity extends Activity {
 
 				saveInFile();
 				// finish();
-
 			}
 
 		});
@@ -75,6 +94,10 @@ public class LonelyTwitterActivity extends Activity {
 		});
 	}
 
+	/**
+	 * Displays user interfaces and loads previous instace states as required
+	 *
+	 */
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
@@ -85,6 +108,11 @@ public class LonelyTwitterActivity extends Activity {
 		oldTweetsList.setAdapter(adapter);
 	}
 
+    /**
+     * Load last instance state
+     *
+     * @return
+     */
 	private void loadFromFile() {
 		try {
 			FileInputStream fis = openFileInput(FILENAME);
@@ -104,7 +132,12 @@ public class LonelyTwitterActivity extends Activity {
 		}
 
 	}
-	
+
+    /**
+     * Save current instance state
+     *
+     * @return
+     */
 	private void saveInFile() {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME,
