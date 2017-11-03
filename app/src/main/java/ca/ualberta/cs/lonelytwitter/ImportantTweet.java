@@ -15,7 +15,7 @@ import java.util.Date;
  */
 
 
-public class ImportantTweet extends Tweet implements Tweetable {
+public class ImportantTweet extends Tweet {
     /**
      * Constructor
      *

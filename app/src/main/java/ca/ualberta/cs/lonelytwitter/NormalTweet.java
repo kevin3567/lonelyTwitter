@@ -14,7 +14,7 @@ import java.util.Date;
  * @see Tweet
  */
 
-public class NormalTweet extends Tweet implements Tweetable {
+public class NormalTweet extends Tweet{
     /**
      * Constructor
      *

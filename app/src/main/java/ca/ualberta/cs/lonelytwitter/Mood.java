@@ -18,7 +18,7 @@ import java.util.Date;
 
 public abstract class Mood {
 
-    Date date; /* date of mood creation */
+    private Date date; /* date of mood creation */
 
     /**
      * Constructor
